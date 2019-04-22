@@ -7,4 +7,8 @@ ext {
             versionCode      : 1,
             versionName      : "1.0"
     ]
+    dependencies = [
+            "appcompat-v7"     : "com.android.support:appcompat-v7:27.1.1",
+            "constraint-layout": "com.android.support.constraint:constraint-layout:1.1.3"
+    ]
 }
