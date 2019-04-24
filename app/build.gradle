@@ -9,6 +9,9 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 64k
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -16,9 +19,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //避免项目中存在相同的jar包，导致运行失败
+    dexOptions {
+        preDexLibraries = false
+    }
+    //jdk1.8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 dependencies {
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':library')
 }

@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!--字体的颜色，纯黑色-->
+    <color name="blackText">#000000</color>
+    <!--透明度颜色-->
+    <color name="alpha_10_black">#1A000000</color>
 </resources>

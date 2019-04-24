@@ -4,12 +4,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.based.component.component_based.R;
+import com.library.base.mvp.BaseActivity;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends BaseActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    public int getContentView() {
+        return R.layout.activity_welcome;
     }
 }
