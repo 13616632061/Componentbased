@@ -7,4 +7,8 @@
     <color name="blackText">#000000</color>
     <!--透明度颜色-->
     <color name="alpha_10_black">#1A000000</color>
+    <!--透明色-->
+    <color name="colorTransparent">#00FFFFFF</color>
+    <color name="transparent">#00000000</color>
+
 </resources>

@@ -12,16 +12,17 @@
         <activity
             android:name=".ui.guide.view.WelcomeActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/WelcomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.main.view.MainActivity"></activity>
-
+        <activity android:name=".ui.main.view.MainActivity" />
+        <activity android:name=".ui.guide.view.SplashPagerActivity" />
+        <activity android:name=".ui.guide.view.GuideActivity"></activity>
     </application>
 
 </manifest>

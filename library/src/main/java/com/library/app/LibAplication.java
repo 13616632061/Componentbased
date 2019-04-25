@@ -2,8 +2,8 @@ package com.library.app;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
 
+import com.blankj.utilcode.util.Utils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -19,12 +19,13 @@ public class LibAplication extends Application {
     public void onCreate() {
         super.onCreate();
         refWatcher = setupLeakCanary();
+        Utils.init(this);
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(this);
+//        MultiDex.install(this);
     }
 
     /**
