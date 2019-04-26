@@ -3,6 +3,7 @@ package com.library.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -19,7 +20,12 @@ public class LibAplication extends Application {
     public void onCreate() {
         super.onCreate();
         refWatcher = setupLeakCanary();
+        //初始化工具类
         Utils.init(this);
+       //初始化路由
+        ARouter.openDebug();
+        ARouter.openDebug();
+        ARouter.init(this); // 尽可能早，推荐在Application中初始化
     }
 
     @Override
@@ -42,5 +48,11 @@ public class LibAplication extends Application {
     public static RefWatcher getRefWatcher(Context context) {
         LibAplication leakApplication = (LibAplication) context.getApplicationContext();
         return leakApplication.refWatcher;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        ARouter.getInstance().destroy();
     }
 }

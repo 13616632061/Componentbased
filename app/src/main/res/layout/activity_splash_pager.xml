@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.based.component.component_based.ui.guide.view.SplashPagerActivity">
+    tools:context="com.based.component.component_based.ui.guide.view.SplashPagerActivity.SplashPagerActivity">
 
     <com.bigkoo.convenientbanner.ConvenientBanner
         android:id="@+id/splash_banner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.bigkoo.convenientbanner.ConvenientBanner>
+        android:layout_height="match_parent"
+        app:canLoop="false"></com.bigkoo.convenientbanner.ConvenientBanner>
 
-
+    <Button
+        android:id="@+id/btn_go"
+        android:visibility="gone"
+        android:textColor="@color/whilte"
+        android:layout_marginBottom="20dp"
+        android:textSize="12sp"
+        android:background="@color/alpha_10_black"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/immediate_experience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </android.support.constraint.ConstraintLayout>

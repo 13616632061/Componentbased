@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.based.component.component_based.R;
 import com.bigkoo.convenientbanner.holder.Holder;
 
 /**
@@ -12,22 +13,19 @@ import com.bigkoo.convenientbanner.holder.Holder;
 
 public class SplashPagerImageHolderView extends Holder<Integer> {
 
-    private Context mContext;
-    private ImageView mImageView;
+    private ImageView iv_splash;
 
-    public SplashPagerImageHolderView(Context mContext, View itemView) {
+    public SplashPagerImageHolderView(View itemView) {
         super(itemView);
-        this.mContext = mContext;
     }
 
     @Override
     protected void initView(View itemView) {
-        mImageView = new ImageView(mContext);
-        mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        iv_splash=itemView.findViewById(R.id.iv_splash);
     }
 
     @Override
     public void updateUI(Integer data) {
-        mImageView.setImageResource(data);
+        iv_splash.setImageResource(data);
     }
 }

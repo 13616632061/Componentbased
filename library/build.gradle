@@ -11,6 +11,11 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
 
 //        multiDexEnabled true
 
@@ -39,15 +44,16 @@ dependencies {
     api rootProject.ext.dependencies["appcompat-v7"]
     //    api rootProject.ext.dependencies["design"]
     api rootProject.ext.dependencies["constraint-layout"]
+    api rootProject.ext.dependencies["recyclerview"]
     debugCompile rootProject.ext.dependencies["debugCompile-leakcanary"]
     releaseCompile rootProject.ext.dependencies["releaseCompile-leakcanary"]
     api rootProject.ext.dependencies["YCCountDownViewLib"]
     //    api rootProject.ext.dependencies["multidex"]
-    //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.6.3'
-    //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     api rootProject.ext.dependencies["butterknife"]
     api rootProject.ext.dependencies["utilcode"]
     api rootProject.ext.dependencies["onvenientBanner"]
     api rootProject.ext.dependencies["rxandroid"]
-    api rootProject.ext.dependencies["recyclerview"]
+    api rootProject.ext.dependencies["logutils"]
+    api rootProject.ext.dependencies["arouter"]
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }

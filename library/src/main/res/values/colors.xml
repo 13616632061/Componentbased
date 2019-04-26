@@ -10,5 +10,7 @@
     <!--透明色-->
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="transparent">#00000000</color>
+    <!--白色-->
+    <color name="whilte">#ffffff</color>
 
 </resources>
