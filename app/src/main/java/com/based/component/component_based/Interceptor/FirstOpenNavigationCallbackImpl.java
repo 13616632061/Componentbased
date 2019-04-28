@@ -5,6 +5,8 @@ import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.apkfuns.logutils.LogUtils;
 import com.based.component.component_based.Constant.RouterMapping;
+import com.blankj.utilcode.util.SPUtils;
+import com.library.constant.Constant;
 
 /**
  * Created by Administrator on 2019/4/26.
@@ -32,6 +34,6 @@ public class FirstOpenNavigationCallbackImpl implements NavigationCallback {
     @Override
     public void onInterrupt(Postcard postcard) {
         LogUtils.i(postcard.getPath());
-        ARouter.getInstance().build(RouterMapping.ROUTER_ACTIVITY_GUIDE).navigation();
+        ARouter.getInstance().build(RouterMapping.ROUTER_ACTIVITY_SPLASHPAGER).navigation();
     }
 }

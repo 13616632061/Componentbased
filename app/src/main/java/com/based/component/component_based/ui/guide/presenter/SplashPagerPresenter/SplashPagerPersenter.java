@@ -1,9 +1,13 @@
 package com.based.component.component_based.ui.guide.presenter.SplashPagerPresenter;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.based.component.component_based.Constant.RouterMapping;
 import com.based.component.component_based.ui.guide.model.SplashPagerModel.SplashPagerModel;
 import com.based.component.component_based.ui.guide.view.SplashPagerActivity.SplashPagerActivity;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.library.base.mvp.BasePresenter;
+import com.library.constant.Constant;
 
 import java.util.List;
 
@@ -36,6 +40,8 @@ public class SplashPagerPersenter extends BasePresenter<SplashPagerActivity> imp
      */
     @Override
     public void goMain() {
-
+        SPUtils.getInstance(Constant.sharedPreferencesName).put(Constant.KEY_FIRST_SPLASH,false);
+        ARouter.getInstance().build(RouterMapping.ROUTER_ACTIVITY_MAIN).navigation();
+        splashPagerActivity.finish();
     }
 }

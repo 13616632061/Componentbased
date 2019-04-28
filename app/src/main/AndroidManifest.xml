@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.based.component.component_based">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:name=".app.MyAplication"
         android:allowBackup="true"
@@ -21,9 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.view.MainActivity" />
-        <activity android:name=".ui.guide.view.SplashPagerActivity.SplashPagerActivity" />
-        <activity android:name=".ui.guide.view.GuideActivity.GuideActivity"></activity>
+        <activity
+            android:name=".ui.main.view.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.guide.view.SplashPagerActivity.SplashPagerActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.guide.view.GuideActivity.GuideActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

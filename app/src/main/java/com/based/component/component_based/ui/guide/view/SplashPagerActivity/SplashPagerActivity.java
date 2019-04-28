@@ -90,7 +90,7 @@ public class SplashPagerActivity extends BaseActivity implements ISplashPagerVie
     public void setOnClick(View view) {
         switch (view.getId()) {
             case R.id.btn_go:
-
+                splashPagerPersenter.goMain();
                 break;
         }
     }
