@@ -58,5 +58,6 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies["FlycoTabLayout"]
 
 }

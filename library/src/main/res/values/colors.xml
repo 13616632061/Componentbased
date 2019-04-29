@@ -13,4 +13,6 @@
     <!--白色-->
     <color name="whilte">#ffffff</color>
 
+    <color name="color_e8e8e8">#e8e8e8</color>
+
 </resources>
