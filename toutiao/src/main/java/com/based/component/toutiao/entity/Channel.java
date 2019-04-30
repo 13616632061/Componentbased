@@ -10,6 +10,11 @@ public class Channel {
     public String channelCode;
     public int itemType;
 
+    public Channel(String title, String channelCode) {
+        this.title = title;
+        this.channelCode = channelCode;
+    }
+
     public String getTitle() {
         return title;
     }
