@@ -3,7 +3,7 @@
     package="com.based.component.toutiao">
 
     <application>
-        <activity android:name=".ui.News.Vew.NewsActivity"></activity>
+        <activity android:name=".ui.News.NewsActivity.Vew.NewsActivity"></activity>
     </application>
 
 </manifest>

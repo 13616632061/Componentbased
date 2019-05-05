@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.based.component.toutiao.ui.News.Vew.NewsActivity">
+    tools:context=".ui.News.NewsActivity.Vew.NewsActivity">
 
     <TextView
         android:id="@+id/tv_search"
@@ -15,19 +15,21 @@
         android:text="@string/search_you_want_to_search"
         android:textSize="14sp" />
 
-    <com.flyco.tablayout.SlidingTabLayout
+    <com.nshmura.recyclertablayout.RecyclerTabLayout
         android:id="@+id/tab_channel"
+        rtl_tabIndicatorColor="@color/colorAccent"
+        rtl_tabIndicatorHeight="2dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_search"></com.flyco.tablayout.SlidingTabLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tv_search"></com.nshmura.recyclertablayout.RecyclerTabLayout>
 
     <ImageView
         android:id="@+id/iv_operation"
         android:layout_width="50dp"
         android:layout_height="35dp"
         android:background="@drawable/shadow_add_titlebar_new"
-        android:src="@drawable/add_channel"
         android:scaleType="center"
+        android:src="@drawable/add_channel"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_search" />
 
@@ -42,6 +44,6 @@
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
-        app:layout_constraintTop_toBottomOf="@+id/line"></android.support.v4.view.ViewPager>
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        app:layout_constraintVertical_weight="1"></android.support.v4.view.ViewPager>
 </android.support.constraint.ConstraintLayout>

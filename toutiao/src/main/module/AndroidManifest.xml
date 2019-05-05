@@ -6,7 +6,7 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.News.Vew.NewsActivity">
+        <activity android:name=".ui.News.NewsActivity.Vew.NewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.LAUNCHER"></category>
