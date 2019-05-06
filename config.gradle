@@ -44,8 +44,14 @@ ext {
             //Gson数据解析
             "gson"                     : "com.google.code.gson:gson:2.8.5",
             //用于显示加载中、网络异常，空布局、内容布局
-            "skeleton"                     : "com.ethanhua:skeleton:1.1.2",
-            "shimmerlayout"                     : "io.supercharge:shimmerlayout:2.1.0",
+            "skeleton"                 : "com.ethanhua:skeleton:1.1.2",
+            "shimmerlayout"            : "io.supercharge:shimmerlayout:2.1.0",
+            //权限管理
+            "permissiongen"            : "com.lovedise:permissiongen:0.0.6",
+            //下拉刷新
+            "BGARefreshLayout"         : "cn.bingoogolapple:bga-refreshlayout:1.1.8",
+            //数据库LitePal
+            "LitePal"                  : "org.litepal.android:java:3.0.0",
 
 
     ]

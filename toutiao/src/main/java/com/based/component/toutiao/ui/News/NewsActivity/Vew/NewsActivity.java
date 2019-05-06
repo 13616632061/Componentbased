@@ -1,6 +1,9 @@
 package com.based.component.toutiao.ui.News.NewsActivity.Vew;
 
+import android.Manifest;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,8 +18,11 @@ import com.nshmura.recyclertablayout.RecyclerTabLayout;
 import java.util.List;
 
 import butterknife.InjectView;
+import kr.co.namee.permissiongen.PermissionFail;
+import kr.co.namee.permissiongen.PermissionGen;
+import kr.co.namee.permissiongen.PermissionSuccess;
 
-public class NewsActivity extends BaseActivity implements INewsActivity{
+public class NewsActivity extends BaseActivity implements INewsActivity {
 
 
     @InjectView(R.id.tv_search)
@@ -38,15 +44,52 @@ public class NewsActivity extends BaseActivity implements INewsActivity{
 
     @Override
     protected void initView() {
-        newsPresenter=new NewsPresenter(this);
+        newsPresenter = new NewsPresenter(this);
+        newsPresenter.initPermission();
         newsPresenter.initChannelData();
+    }
+
+    /**
+     * 初始化权限
+     */
+    @Override
+    public void initPermission() {
+        PermissionGen.with(this)
+                .addRequestCode(100)//请求码
+                .permissions(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,//读写权限
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .request();
+    }
+
+    @Override
+    public void initChannelData(List<Channel> mSelectedChannels, List<NewsFragment> newsFragments) {
+        adapter = new NewsChannelFragmentAdapter(getSupportFragmentManager(), newsFragments, mSelectedChannels);
+        vpContent.setAdapter(adapter);
+        tabChannel.setUpWithViewPager(vpContent);
     }
 
 
     @Override
-    public void initChannelData(List<Channel> mSelectedChannels,List<NewsFragment> newsFragments) {
-        adapter=new NewsChannelFragmentAdapter(getSupportFragmentManager(),newsFragments,mSelectedChannels);
-        vpContent.setAdapter(adapter);
-        tabChannel.setUpWithViewPager(vpContent);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionGen.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
+
+    /**
+     * 权限成功
+     */
+    @PermissionSuccess(requestCode = 100)
+    public void requestPermissionsSuccess() {
+        Log.i("权限", "Success");
+    }
+
+    /**
+     * 权限失败
+     */
+    @PermissionFail(requestCode = 100)
+    public void requestPermissionsFail() {
+        Log.i("权限", "Fail");
+    }
+
 }

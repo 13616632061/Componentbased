@@ -22,6 +22,11 @@ public class NewsPresenter implements INewsPresenter {
     }
 
     @Override
+    public void initPermission() {
+        newsActivity.initPermission();
+    }
+
+    @Override
     public void initChannelData() {
         List<Channel> mSelectedChannels = newsModel.initChannelData(newsActivity);
         List<NewsFragment> newsFragments=newsModel.initNewsFragmentData(newsActivity,mSelectedChannels);

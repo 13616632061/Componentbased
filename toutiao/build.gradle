@@ -51,7 +51,8 @@ android {
             }
             ////res 目录的拆分
             res.srcDirs = [
-                    'src/main/res/common'
+                    'src/main/res/common',
+                    'src/main/res/news',
             ]
         }
     }

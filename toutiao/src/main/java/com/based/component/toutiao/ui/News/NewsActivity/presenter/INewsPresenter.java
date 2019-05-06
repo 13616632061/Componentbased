@@ -9,6 +9,8 @@ import java.util.List;
  */
 
 public interface INewsPresenter {
+    //初始化权限
+    void initPermission();
     /**
      * 初始化News分类数据
      * @return

@@ -21,8 +21,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends LazyLoadFrag
 
     protected T mPresenter;
     private View rootView;
-    private Skeleton mStateView;//用于显示加载中、网络异常，空布局、内容布局
-    private Activity mActivity;
+    protected Skeleton mStateView;//用于显示加载中、网络异常，空布局、内容布局
+    protected Activity mActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends LazyLoadFrag
             ButterKnife.inject(this, rootView);
 
             initView(rootView);
+            initData();
         } else {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null) {
@@ -54,7 +55,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends LazyLoadFrag
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        mActivity= (Activity) context;
+        mActivity = (Activity) context;
     }
 
     /**
@@ -65,6 +66,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends LazyLoadFrag
         super.onFragmentFirstVisible();
         loadData();
     }
+
     /**
      * 得到当前界面的布局文件id(由子类实现)
      *
@@ -79,6 +81,12 @@ public abstract class BaseFragment<T extends BasePresenter> extends LazyLoadFrag
     }
 
     /**
+     * 初始化数据
+     */
+    public void initData() {
+    }
+
+    /**
      * 加载数据
      */
     protected abstract void loadData();
@@ -87,6 +95,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends LazyLoadFrag
     @Override
     public void onDestroy() {
         super.onDestroy();
-        rootView=null;
+        rootView = null;
     }
 }

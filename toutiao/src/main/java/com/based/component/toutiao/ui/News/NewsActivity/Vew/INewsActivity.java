@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 public interface INewsActivity {
+    //初始化权限
+   void initPermission();
     //初始化分类
     void initChannelData(List<Channel> mSelectedChannels,List<NewsFragment> newsFragments);
 }
