@@ -17,7 +17,7 @@ android {
             }
         }
 
-//        multiDexEnabled true
+        multiDexEnabled true
 
     }
 
@@ -34,6 +34,10 @@ android {
 //        targetCompatibility JavaVersion.VERSION_1_7
 //    }
 
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -48,22 +52,28 @@ dependencies {
     debugCompile rootProject.ext.dependencies["debugCompile-leakcanary"]
     releaseCompile rootProject.ext.dependencies["releaseCompile-leakcanary"]
     api rootProject.ext.dependencies["YCCountDownViewLib"]
-    //    api rootProject.ext.dependencies["multidex"]
+    api rootProject.ext.dependencies["multidex"]
     api rootProject.ext.dependencies["butterknife"]
     api rootProject.ext.dependencies["utilcode"]
     api rootProject.ext.dependencies["onvenientBanner"]
-    api rootProject.ext.dependencies["rxandroid"]
     api rootProject.ext.dependencies["logutils"]
     api rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api rootProject.ext.dependencies["recyclertablayout"]
-    api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies["skeleton"]
     api rootProject.ext.dependencies["shimmerlayout"]
     api rootProject.ext.dependencies["permissiongen"]
     api rootProject.ext.dependencies["BGARefreshLayout"]
     api rootProject.ext.dependencies["LitePal"]
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+    api rootProject.ext.dependencies["GSYVideoPlayer"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["retrofit2-retrofit"]
+    api rootProject.ext.dependencies["retrofit2-gson"]
+    api rootProject.ext.dependencies["retrofit2-adapter-rxjava"]
+    api rootProject.ext.dependencies["retrofit2-adapter-converter-scalars"]
+    api rootProject.ext.dependencies["okhttp3-logging-interceptor"]
 
 }

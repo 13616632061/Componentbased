@@ -11,7 +11,7 @@ import com.based.component.toutiao.R;
 import com.based.component.toutiao.adapter.NewsChannelFragmentAdapter;
 import com.based.component.toutiao.entity.Channel;
 import com.based.component.toutiao.ui.News.NewsActivity.presenter.NewsPresenter;
-import com.based.component.toutiao.ui.News.NewsFragment.NewsFragment;
+import com.based.component.toutiao.ui.News.NewsFragment.view.NewsFragment;
 import com.library.base.mvp.BaseActivity;
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
 

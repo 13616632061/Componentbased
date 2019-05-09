@@ -2,6 +2,7 @@ package com.library.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
@@ -15,10 +16,15 @@ import com.squareup.leakcanary.RefWatcher;
 public class LibAplication extends Application {
 
     private RefWatcher refWatcher;
+    //以下属性应用于整个应用程序，合理利用资源，减少资源浪费
+    private static Context mContext;//上下文
 
     @Override
     public void onCreate() {
         super.onCreate();
+        //对全局属性赋值
+        mContext = getApplicationContext();
+
         refWatcher = setupLeakCanary();
         //初始化工具类
         Utils.init(this);
@@ -31,7 +37,7 @@ public class LibAplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-//        MultiDex.install(this);
+        MultiDex.install(this);
     }
 
     /**
@@ -54,5 +60,8 @@ public class LibAplication extends Application {
     public void onTerminate() {
         super.onTerminate();
         ARouter.getInstance().destroy();
+    }
+    public static Context getContext() {
+        return mContext;
     }
 }

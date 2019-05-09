@@ -1,19 +1,19 @@
-package com.based.component.toutiao.ui.News.NewsFragment;
+package com.based.component.toutiao.ui.News.NewsFragment.view;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.based.component.toutiao.R;
+import com.based.component.toutiao.adapter.VideoListAdapter;
 import com.based.component.toutiao.constant.Constant;
-import com.blankj.utilcode.util.SPUtils;
+import com.based.component.toutiao.entity.News;
 import com.library.base.mvp.BaseFragment;
 import com.library.weight.PowerfulRecyclerView;
 import com.library.weight.TipView;
 
-import butterknife.ButterKnife;
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.InjectView;
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
@@ -36,6 +36,9 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
     private boolean isVideoList;//是否是视频模块
 
     private boolean isRecommendChannel;//是否是推荐频道
+    private VideoListAdapter mVideoListAdapter;
+    private List<News> mNewsList = new ArrayList<>();
+
 
     @Override
     protected int setContentViewId() {
@@ -75,6 +78,12 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
 
         String[] channelCodes = getResources().getStringArray(R.array.channel_code);
         isRecommendChannel = mChannelCode.equals(channelCodes[0]);
+
+        if (isVideoList){
+//            mVideoListAdapter=new VideoListAdapter(R.layout.item_video_list,)
+        }else {
+
+        }
     }
 
     @Override

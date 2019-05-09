@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.utils.TextUtils;
 import com.based.component.toutiao.R;
 import com.based.component.toutiao.constant.Constant;
 import com.based.component.toutiao.entity.Channel;
-import com.based.component.toutiao.ui.News.NewsFragment.NewsFragment;
+import com.based.component.toutiao.ui.News.NewsFragment.view.NewsFragment;
 import com.blankj.utilcode.util.SPUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

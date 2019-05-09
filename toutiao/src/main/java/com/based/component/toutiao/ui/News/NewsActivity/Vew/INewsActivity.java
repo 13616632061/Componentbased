@@ -1,7 +1,7 @@
 package com.based.component.toutiao.ui.News.NewsActivity.Vew;
 
 import com.based.component.toutiao.entity.Channel;
-import com.based.component.toutiao.ui.News.NewsFragment.NewsFragment;
+import com.based.component.toutiao.ui.News.NewsFragment.view.NewsFragment;
 
 import java.util.List;
 

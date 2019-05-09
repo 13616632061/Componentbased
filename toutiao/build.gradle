@@ -27,7 +27,8 @@ android {
         if (rootProject.ext.isTouTiaoAplication){
             applicationId 'com.based.component.toutiao'
         }
-
+        // 64k
+//        multiDexEnabled true
     }
 
     buildTypes {
