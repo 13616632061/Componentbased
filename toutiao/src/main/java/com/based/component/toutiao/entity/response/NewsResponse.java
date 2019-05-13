@@ -1,5 +1,7 @@
-package com.based.component.toutiao.entity;
+package com.based.component.toutiao.entity.response;
 
+import com.based.component.toutiao.entity.NewsData;
+import com.based.component.toutiao.entity.TipEntity;
 import com.google.gson.Gson;
 
 import java.util.List;

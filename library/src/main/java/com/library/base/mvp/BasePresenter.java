@@ -1,9 +1,7 @@
 package com.library.base.mvp;
 
 import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -13,7 +11,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class BasePresenter<V> {
-
+//    protected ApiService apiService= ApiRetrofit.getInstance().getApiService();
     protected V mView;
     private CompositeSubscription subscription;
 

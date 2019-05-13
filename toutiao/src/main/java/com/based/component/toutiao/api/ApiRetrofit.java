@@ -1,13 +1,13 @@
-package com.library.api;
+package com.based.component.toutiao.api;
 
 import com.apkfuns.logutils.LogUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.google.gson.GsonBuilder;
-import com.library.app.LibAplication;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import debug.TouTiaoAplication;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
- * Created by Administrator on 2019/5/9.
+ * Created by Administrator on 2019/5/13.
  */
 
 public class ApiRetrofit {
@@ -96,7 +96,7 @@ public class ApiRetrofit {
 
     public ApiRetrofit() {
         //cache url
-        File httpCacheDirectory = new File(LibAplication.getContext().getCacheDir(), "responses");
+        File httpCacheDirectory = new File(TouTiaoAplication.getContext().getCacheDir(), "responses");
         int cacheSize = 10 * 1024 * 1024; // 10 MiB
         Cache cache = new Cache(httpCacheDirectory, cacheSize);
 

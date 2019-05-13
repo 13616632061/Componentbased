@@ -22,7 +22,7 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
  * Created by Administrator on 2019/5/5.
  */
 
-public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
+public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARefreshLayoutDelegate, INewsFragmentView {
     @InjectView(R.id.tip_view)
     TipView tipView;
     @InjectView(R.id.list)
@@ -79,9 +79,10 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
         String[] channelCodes = getResources().getStringArray(R.array.channel_code);
         isRecommendChannel = mChannelCode.equals(channelCodes[0]);
 
-        if (isVideoList){
-//            mVideoListAdapter=new VideoListAdapter(R.layout.item_video_list,)
-        }else {
+        if (isVideoList) {
+            mVideoListAdapter=new VideoListAdapter(R.layout.item_video_list,mNewsList);
+
+        } else {
 
         }
     }
@@ -110,5 +111,10 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         return false;
+    }
+
+    @Override
+    public void getNewsList(List<News> newsList) {
+        mNewsList.addAll(newsList);
     }
 }
