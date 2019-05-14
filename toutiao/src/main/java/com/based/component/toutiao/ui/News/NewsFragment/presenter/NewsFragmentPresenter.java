@@ -1,7 +1,6 @@
 package com.based.component.toutiao.ui.News.NewsFragment.presenter;
 
 import com.apkfuns.logutils.LogUtils;
-import com.based.component.toutiao.api.SubscriberCallBack;
 import com.based.component.toutiao.dao.NewsRecordHelper;
 import com.based.component.toutiao.entity.News;
 import com.based.component.toutiao.entity.NewsData;
@@ -16,6 +15,8 @@ import com.library.base.mvp.BasePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by Administrator on 2019/5/13.
@@ -60,10 +61,21 @@ public class NewsFragmentPresenter extends BasePresenter<INewsFragmentView> impl
      * @param channelCode
      */
     public void getSubscriptionNewsList(String channelCode) {
-        addSubscription(newsFragmentModel.getNewsList(channelCode, lastTime, System.currentTimeMillis() / 1000), new SubscriberCallBack<NewsResponse>() {
+        addSubscription(newsFragmentModel.getNewsList(channelCode, lastTime, System.currentTimeMillis() / 1000), new Subscriber<NewsResponse>() {
+
 
             @Override
-            protected void onSuccess(NewsResponse response) {
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.e(e.getLocalizedMessage());
+            }
+
+            @Override
+            public void onNext(NewsResponse response) {
                 lastTime = System.currentTimeMillis() / 1000;
                 SPUtils.getInstance().put(channelCode, lastTime);
 
@@ -76,11 +88,6 @@ public class NewsFragmentPresenter extends BasePresenter<INewsFragmentView> impl
                 }
                 LogUtils.e(newsList);
                 mView.getNewsList(newsList);
-            }
-
-            @Override
-            protected void onError() {
-
             }
         });
     }

@@ -7,6 +7,9 @@ import com.based.component.toutiao.R;
 import com.based.component.toutiao.adapter.VideoListAdapter;
 import com.based.component.toutiao.constant.Constant;
 import com.based.component.toutiao.entity.News;
+import com.based.component.toutiao.ui.News.NewsFragment.presenter.NewsFragmentPresenter;
+import com.blankj.utilcode.util.NetworkUtils;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.library.base.mvp.BaseFragment;
 import com.library.weight.PowerfulRecyclerView;
 import com.library.weight.TipView;
@@ -36,8 +39,9 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
     private boolean isVideoList;//是否是视频模块
 
     private boolean isRecommendChannel;//是否是推荐频道
-    private VideoListAdapter mVideoListAdapter;
+    private BaseQuickAdapter mNewsAdapter;
     private List<News> mNewsList = new ArrayList<>();
+    private NewsFragmentPresenter mNewsFragmentPresenter;
 
 
     @Override
@@ -73,6 +77,7 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
     @Override
     public void initData() {
         super.initData();
+        mNewsFragmentPresenter=new NewsFragmentPresenter(this);
         mChannelCode = getArguments().getString(Constant.CHANNEL_CODE);
         isVideoList = getArguments().getBoolean(Constant.IS_VIDEO_LIST, false);
 
@@ -80,16 +85,17 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
         isRecommendChannel = mChannelCode.equals(channelCodes[0]);
 
         if (isVideoList) {
-            mVideoListAdapter=new VideoListAdapter(R.layout.item_video_list,mNewsList);
-
+            mNewsAdapter=new VideoListAdapter(mActivity,R.layout.item_video_list,mNewsList);
+            list.setAdapter(mNewsAdapter);
         } else {
 
         }
+
     }
 
     @Override
     protected void loadData() {
-
+        mNewsFragmentPresenter.getNewsList(mChannelCode);
     }
 
     /**
@@ -99,7 +105,15 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
      */
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-
+        if (!NetworkUtils.isConnected()) {
+            //网络不可用弹出提示
+            tipView.show();
+            if (refreshLayout.getCurrentRefreshStatus() == BGARefreshLayout.RefreshStatus.REFRESHING) {
+                refreshLayout.endRefreshing();
+            }
+            return;
+        }
+        mNewsFragmentPresenter.getNewsList(mChannelCode);
     }
 
     /**
@@ -115,6 +129,8 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
 
     @Override
     public void getNewsList(List<News> newsList) {
+        refreshLayout.endRefreshing();// 加载完毕后在 UI 线程结束下拉刷新
         mNewsList.addAll(newsList);
+        mNewsAdapter.notifyDataSetChanged();
     }
 }
