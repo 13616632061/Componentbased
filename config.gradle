@@ -3,7 +3,7 @@ ext {
 
     android = [
             compileSdkVersion: 28,
-            minSdkVersion    : 19,
+            minSdkVersion    : 26,
             targetSdkVersion : 28,
             versionCode      : 1,
             versionName      : "1.0"
@@ -62,7 +62,8 @@ ext {
             "LitePal"                            : "org.litepal.android:java:3.0.0",
             //recyclerview适配器
             "BaseRecyclerViewAdapterHelper"      : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",
-            //视频播放6.0.3以上最低minsdk26，7.0.0以上因为支持库切换到 androidx 会导致与Androidx和Android support库不能共存
+            //视频
+            "jiaozivideoplayer"                  : "cn.jzvd:jiaozivideoplayer:7.0.3",
             "GSYVideoPlayer"                     : "com.shuyu:GSYVideoPlayer:6.0.1",
 
 

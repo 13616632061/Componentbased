@@ -11,8 +11,8 @@ android {
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        // 64k
-//        multiDexEnabled true
+//         64k
+        multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
         javaCompileOptions {
             annotationProcessorOptions {
@@ -25,6 +25,7 @@ android {
         }
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -43,7 +44,8 @@ dependencies {
     implementation project(':library')
     api rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-    if (!rootProject.ext.isTouTiaoAplication){
+    if (!rootProject.ext.isTouTiaoAplication) {
         implementation project(':toutiao')
     }
+
 }

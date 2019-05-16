@@ -27,8 +27,9 @@ android {
         if (rootProject.ext.isTouTiaoAplication){
             applicationId 'com.based.component.toutiao'
         }
-        // 64k
-//        multiDexEnabled true
+//         64k
+        multiDexEnabled true
+
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
@@ -73,5 +74,6 @@ dependencies {
     implementation project(':library')
     api rootProject.ext.dependencies["arouter"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
 
 }

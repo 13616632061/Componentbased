@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--定义seekbar滑动条的底色-->
+    <item
+        android:id="@android:id/background"
+        android:height="7dp">
+        <shape>
+            <solid android:color="@color/whilte"></solid>
+        </shape>
+    </item>
+    <!--定义seekbar滑动条进度颜色-->
+    <item
+        android:id="@android:id/progress"
+        android:height="7dp">
+        <clip>
+            <shape>
+                <solid android:color="#FE7700" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>
