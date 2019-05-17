@@ -1,5 +1,7 @@
 package com.based.component.toutiao.ui.News.NewsFragment.view;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -11,8 +13,8 @@ import com.based.component.toutiao.ui.News.NewsFragment.presenter.NewsFragmentPr
 import com.blankj.utilcode.util.NetworkUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.library.base.mvp.BaseFragment;
-import com.library.weight.PowerfulRecyclerView;
 import com.library.weight.TipView;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +31,16 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
     @InjectView(R.id.tip_view)
     TipView tipView;
     @InjectView(R.id.list)
-    PowerfulRecyclerView list;
+    RecyclerView list;
     @InjectView(R.id.fl_content)
     FrameLayout flContent;
     @InjectView(R.id.refresh_layout)
     BGARefreshLayout refreshLayout;
 
+    private static final String TAG = BaseQuickAdapter.class.getSimpleName();
     private String mChannelCode;//频道code
     private boolean isVideoList;//是否是视频模块
+    LinearLayoutManager linearLayoutManager;
 
     private boolean isRecommendChannel;//是否是推荐频道
     private BaseQuickAdapter mNewsAdapter;
@@ -77,7 +81,7 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
     @Override
     public void initData() {
         super.initData();
-        mNewsFragmentPresenter=new NewsFragmentPresenter(this);
+        mNewsFragmentPresenter = new NewsFragmentPresenter(this);
         mChannelCode = getArguments().getString(Constant.CHANNEL_CODE);
         isVideoList = getArguments().getBoolean(Constant.IS_VIDEO_LIST, false);
 
@@ -85,7 +89,8 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
         isRecommendChannel = mChannelCode.equals(channelCodes[0]);
 
         if (isVideoList) {
-            mNewsAdapter=new VideoListAdapter(mActivity,R.layout.item_video_list,mNewsList);
+            mNewsAdapter = new VideoListAdapter(mActivity, R.layout.item_video_list, mNewsList);
+            list.setLayoutManager(new LinearLayoutManager(mActivity));
             list.setAdapter(mNewsAdapter);
         } else {
 
@@ -132,5 +137,59 @@ public class NewsFragment extends BaseFragment implements BGARefreshLayout.BGARe
         refreshLayout.endRefreshing();// 加载完毕后在 UI 线程结束下拉刷新
         mNewsList.addAll(newsList);
         mNewsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void listener() {
+        list.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            int firstVisibleItem, lastVisibleItem;
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                firstVisibleItem = linearLayoutManager.findFirstVisibleItemPosition();
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                //大于0说明有播放
+                if (GSYVideoManager.instance().getPlayPosition() >= 0) {
+                    //当前播放的位置
+                    int position = GSYVideoManager.instance().getPlayPosition();
+                    //对应的播放列表TAG
+                    if (GSYVideoManager.instance().getPlayTag().equals(TAG)
+                            && (position < firstVisibleItem || position > lastVisibleItem)) {
+
+                        //如果滑出去了上面和下面就是否，和今日头条一样
+                        //是否全屏
+                        if (!GSYVideoManager.isFullState(mActivity)) {
+                            GSYVideoManager.releaseAllVideos();
+                            mNewsAdapter.notifyDataSetChanged();
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        GSYVideoManager.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        GSYVideoManager.onResume(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        GSYVideoManager.releaseAllVideos();
     }
 }

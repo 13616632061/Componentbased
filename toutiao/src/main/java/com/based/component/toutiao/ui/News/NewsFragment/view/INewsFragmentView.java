@@ -11,4 +11,6 @@ import java.util.List;
 public interface INewsFragmentView {
 
     void getNewsList(List<News> newsList);
+
+    void listener();
 }

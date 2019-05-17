@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +14,8 @@
         app:tipBackgroundColor="@color/color_D5E8F6"
         app:tipText="@string/net_unavailable"
         app:tipTextColor="@color/color_4592C6"
-        app:tipTextSize="14sp"></com.library.weight.TipView>
+        app:tipTextSize="14sp"
+        tools:ignore="MissingConstraints"></com.library.weight.TipView>
 
     <cn.bingoogolapple.refreshlayout.BGARefreshLayout
         android:id="@+id/refresh_layout"
@@ -28,14 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.library.weight.PowerfulRecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:dividerColor="@color/color_d8d8d8"
                 app:dividerMarginLeft="10dp"
                 app:dividerMarginRight="10dp"
-                app:dividerSize="0.5dp"></com.library.weight.PowerfulRecyclerView>
+                app:dividerSize="0.5dp"></android.support.v7.widget.RecyclerView>
         </FrameLayout>
     </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 

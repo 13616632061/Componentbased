@@ -61,6 +61,7 @@ public class NewsFragmentPresenter extends BasePresenter<INewsFragmentView> impl
      * @param channelCode
      */
     public void getSubscriptionNewsList(String channelCode) {
+        LogUtils.e(newsFragmentModel.getNewsList(channelCode, lastTime, System.currentTimeMillis() / 1000));
         addSubscription(newsFragmentModel.getNewsList(channelCode, lastTime, System.currentTimeMillis() / 1000), new Subscriber<NewsResponse>() {
 
 

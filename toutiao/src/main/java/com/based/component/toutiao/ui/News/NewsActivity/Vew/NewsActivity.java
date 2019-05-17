@@ -14,6 +14,7 @@ import com.based.component.toutiao.ui.News.NewsActivity.presenter.NewsPresenter;
 import com.based.component.toutiao.ui.News.NewsFragment.view.NewsFragment;
 import com.library.base.mvp.BaseActivity;
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import java.util.List;
 
@@ -92,4 +93,11 @@ public class NewsActivity extends BaseActivity implements INewsActivity {
         Log.i("权限", "Fail");
     }
 
+    @Override
+    public void onBackPressed() {
+        if (GSYVideoManager.backFromWindowFull(this)) {
+            return;
+        }
+        super.onBackPressed();
+    }
 }
