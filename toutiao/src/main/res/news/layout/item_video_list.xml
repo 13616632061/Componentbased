@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         tools:ignore="MissingConstraints">
-        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
-            android:id="@+id/video_player"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"></com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer>
-        <!--<com.based.component.toutiao.weight.MyJzvdStd-->
-            <!--android:id="@+id/jz_video"-->
+        <!--<com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer-->
+            <!--android:id="@+id/video_player"-->
             <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="200dp"></com.based.component.toutiao.weight.MyJzvdStd>-->
+            <!--android:layout_height="200dp"></com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer>-->
+      <com.library.weight.MyJZVideoPlayerStandard
+          android:id="@+id/video_player"
+          android:layout_width="match_parent"
+          android:layout_height="200dp"></com.library.weight.MyJZVideoPlayerStandard>
 
         <LinearLayout
             android:id="@+id/ll_title"

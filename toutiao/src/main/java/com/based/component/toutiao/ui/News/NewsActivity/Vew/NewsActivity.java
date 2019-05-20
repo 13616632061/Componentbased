@@ -14,11 +14,11 @@ import com.based.component.toutiao.ui.News.NewsActivity.presenter.NewsPresenter;
 import com.based.component.toutiao.ui.News.NewsFragment.view.NewsFragment;
 import com.library.base.mvp.BaseActivity;
 import com.nshmura.recyclertablayout.RecyclerTabLayout;
-import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import java.util.List;
 
 import butterknife.InjectView;
+import cn.jzvd.Jzvd;
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
 import kr.co.namee.permissiongen.PermissionSuccess;
@@ -77,6 +77,28 @@ public class NewsActivity extends BaseActivity implements INewsActivity {
         PermissionGen.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
 
+    @Override
+    protected void initListener() {
+        super.initListener();
+        vpContent.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                //当页签切换的时候，如果有播放视频，则释放资源
+                Jzvd.resetAllVideos();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+    }
+
     /**
      * 权限成功
      */
@@ -93,11 +115,18 @@ public class NewsActivity extends BaseActivity implements INewsActivity {
         Log.i("权限", "Fail");
     }
 
+
     @Override
     public void onBackPressed() {
-        if (GSYVideoManager.backFromWindowFull(this)) {
+        if (Jzvd.backPress()) {
             return;
         }
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Jzvd.resetAllVideos();
     }
 }

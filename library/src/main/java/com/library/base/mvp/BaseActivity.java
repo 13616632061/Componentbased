@@ -1,12 +1,10 @@
 package com.library.base.mvp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.library.app.LibAplication;
 import com.squareup.leakcanary.RefWatcher;
@@ -58,6 +56,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
      * 初始化view
      */
     protected abstract void initView();
+
+    /**
+     * 事件监听
+     */
+    protected void initListener(){};
 
     /**
      * 初始化数据
